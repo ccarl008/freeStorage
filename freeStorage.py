@@ -5,12 +5,14 @@ import shutil
 import ctypes
 import sys
 
+# Check for admin privileges
 def isAdmin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
 
+# Relaunch the script with admin privileges
 def runAsAdmin():
     if not isAdmin():
         print("Restarting script with admin privileges...")
@@ -22,10 +24,12 @@ def runAsAdmin():
         )
         sys.exit()
 
+# Get disk usage
 def get_disk_usage():
     total, used, free = shutil.disk_usage("C:\\")
     return  free
 
+# Delete contents of a folder (Main Function)
 def deleteContents(folder: Path):
     """Deletes folder content, keeps folder intact"""
     if not folder.exists():
@@ -56,6 +60,7 @@ def deleteContents(folder: Path):
             print(f"Failed to delete {item}: {e}")
     print(f"Deleted {deleted}/{total} items in {folder.name}", end="\r")
 
+# Delete User Temp Files
 def deleteUserTemp():
     print("Deleting User Temp Files...")
     before = get_disk_usage()
@@ -65,6 +70,7 @@ def deleteUserTemp():
     freed = after - before
     print(f"Freed {freed / (1024 ** 3):.2f} GB of space from user temp files.")
 
+# Delete System Temp Files
 def deleteSysTemp():
     print("Deleting System Temp Files...")
     before = get_disk_usage()
@@ -73,7 +79,8 @@ def deleteSysTemp():
     after = get_disk_usage()
     freed = after - before
     print(f"Freed {freed / (1024 ** 3):.2f} GB of space from system temp files.")
-    
+
+# Delete Browser Cache    
 def deleteBrowserCache():
     print("Deleting Browser Cache...")
 
@@ -96,7 +103,8 @@ def deleteBrowserCache():
     print(f"Freed {freed / (1024 ** 3):.2f} GB of space from browser caches.")
 
     print("Browser cache cleanup complete.")
-
+    
+# Main function for command-line usage
 def main():
         
     deleteUserTemp()
