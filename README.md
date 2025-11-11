@@ -10,8 +10,6 @@ Currently working on a simple GUI that will be pushed as soon as it is done.
 - Scan and display storage usage across drives or directories
 - Delete temporary or unnecessary files to reclaim space
 
----
-
 ## Requirements
 - **Python 3.8+**
 
