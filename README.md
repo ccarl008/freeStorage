@@ -18,6 +18,8 @@ Currently working on a simple GUI that will be pushed as soon as it is done.
 - Ensure Python is installed
 - If not go to python.org/downloads/ and download the latest version
 - During install ensure to check **"Add Python to PATH"**
+- Ensure customtkinter is installed
+- If not type pip install customtkinter in commandline.
 - Once installed, open up a commandline
 - Use 'cd' to get to folder where freeStorage.py is
 - Type 'python freeStorage.py'
